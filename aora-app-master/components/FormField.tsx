@@ -19,7 +19,7 @@ const FormField = ({ title, value, placeholder, handleChangeText, otherStyles, k
 
       <View className='shadow-2xl border-2 border-black-200 w-full h-16 px-4 bg-grey-200 rounded-2xl focus:border-blue-400 items-center flex-row'>
         <TextInput
-          className='flex-1 text-white font-psemibold text-base'
+          className='flex-1 text-black font-psemibold text-base'
           value={value}
           placeholder={placeholder}
           placeholderTextColor='#7b7b8b'
