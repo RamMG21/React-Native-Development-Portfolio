@@ -25,7 +25,7 @@ const Home = () => {
     setRefreshing(false);
   }
   return (
-    <SafeAreaView className='bg-primary h-full'>
+    <SafeAreaView className='bg-blue-200  h-full'>
       <FlatList 
         data={posts}
         keyExtractor={(item) => item.$id}
@@ -46,7 +46,7 @@ const Home = () => {
 
               <View className='mt-1.5'>
                 <Image 
-                  source={images.logoSmall}
+                  source={images.icon_1}
                   className='w-9 h-10'
                   resizeMode='contain'
                 />
