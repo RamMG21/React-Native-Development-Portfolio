@@ -1,5 +1,5 @@
-import { Feather } from '@expo/vector-icons';
-import React from 'react';
+import { Feather, FontAwesome } from '@expo/vector-icons';
+import React, { useState } from 'react';
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 
@@ -50,6 +50,7 @@ const collaborators = [
 ];
 
 const index = () => {
+  const [task, setTask] = useState(data);
   return (
     <View style={{flex : 1 }}>
       <SafeAreaView >
@@ -89,7 +90,7 @@ const index = () => {
                   </View>
                 </View>
                 
-                <View style = {styles.row, {alignItems: 'flex-start'}}>
+                <View style = {styles.rowcoll}>
                   <Text style = {styles.rowField}>Collaborators</Text>
                   <View>
                     {collaborators.map(({name, avatar}, index) => {
@@ -102,11 +103,46 @@ const index = () => {
                         </TouchableOpacity>
                       )
                     })}
-                    
                   </View>
                 </View>
-
               </View>
+
+              <View style = {styles.section}>
+                <Text style = {styles.sectionTitle}>Description</Text>
+                <Text style = {styles.sectionText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis itaque ad repellendus ab nesciunt, voluptatem atque officia incidunt repudiandae deleniti illo aperiam minus iusto ipsam. Vero incidunt dolorem magnam consequuntur.</Text>
+              </View>
+
+              <View style = {styles.section}>
+                <Text style = {styles.sectionTitle}>Task</Text>
+                    {task.map(({label, date, completed}, index) => {
+                      const isActive = completed === true;
+                      const dateFormatted = date.toLocaleDateString('en-US', {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric'
+                      })
+
+                      const description = completed ? `Completed on ${dateFormatted}`: 'Not completed';
+                      return (
+                        <TouchableOpacity style = {styles.task} onPress={() =>{
+                          setTask(value => {
+                            value[index].completed = !value[index].completed;
+                            return[...value];
+                          })
+                        }}>
+                          <View style = {[styles.taskIcon, {backgroundColor: isActive ? '#eb3333' : '#fff'}]}>
+                            <FontAwesome color = "#fff" name = "check" size = {11} style = {!isActive && {display: 'none'}}></FontAwesome>
+                          </View>
+
+                          <View>
+                             <Text style = {styles.taskLabel}>{label}</Text>
+                            <Text style = {styles.taskDescription} >{description}</Text>
+                          </View>
+                        </TouchableOpacity>
+                      )
+                    })}
+              </View>
+
             </ScrollView>
       </SafeAreaView>
     </View>
@@ -151,10 +187,29 @@ const styles = StyleSheet.create ({
     paddingTop: 12,
     marginBottom: 8
   },
+  sectionTitle:{
+    fontSize: 20,
+    fontWeight: '600',
+    color: "#lelele",
+    marginBottom: 16
+  },
+  sectionText:{
+    fontSize: 14,
+    lineHeight: 20,
+    color: '#444',
+    marginBottom: 16
+
+  },
   row: {
     flexDirection: 'row',
     marginVertical: 8,
     alignItems: "center",
+    justifyContent: "flex-start"
+  },
+  rowcoll: {
+    alignItems: 'flex-start',
+    flexDirection: 'row',
+    marginVertical: 8,
     justifyContent: "flex-start"
   },
   rowField: {
@@ -197,6 +252,39 @@ const styles = StyleSheet.create ({
     fontWeight: '500',
     color: '#171717',
     marginLeft: 6
+  },
+  task:{
+    position: 'relative',
+    paddingTop: 12,
+    paddingRight: 16,
+    paddingBottom: 14,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start'
+  },
+  taskIcon:{
+    marginTop: 4,
+    marginRight: 12,
+    marginBottom: 0,
+    marginLeft: 6,
+    width: 24,
+    height: 24,
+    borderColor: '#eb3333',
+    borderRadius: 9999,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  taskLabel:{
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#000',
+    marginBottom: 5
+  },
+  taskDescription:{
+    fontSize: 16,
+    fontWeight: '400',
+    color: '#959595'
   },
 
 })
