@@ -1,4 +1,4 @@
-# Welcome to your Expo app 👋
+# Task Manager simple Expo app 👋
 
 <img width="366" height="819" alt="Screenshot 2025-07-23 151239" src="https://github.com/user-attachments/assets/8af23298-140c-496b-a3e9-dbdece675786" />
 
