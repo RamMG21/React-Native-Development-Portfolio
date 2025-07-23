@@ -1,5 +1,7 @@
 # Welcome to your Expo app 👋
 
+<img width="366" height="819" alt="Screenshot 2025-07-23 151239" src="https://github.com/user-attachments/assets/8af23298-140c-496b-a3e9-dbdece675786" />
+
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 ## Get started
@@ -26,6 +28,7 @@ In the output, you'll find options to open the app in a
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
 ## Get a fresh project
+
 
 When you're ready, run:
 
